@@ -15,6 +15,9 @@ def next_ten_nums(num):
 def test_ten_nums():
     assert next_ten_nums(23) == "24, 25, 26, 27, 28, 29, 30, 31, 32, 33" 
 
+def comma_delimited_string(string_list):
+    return ', '.join(string_list) 
+
 def test_comma_string():
     result = comma_delimited_string(["red", "pink", "purple"])
     assert result == "red, pink, purple" 
