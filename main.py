@@ -33,6 +33,16 @@ def test_comma_string():
     result = comma_delimited_string(["red", "pink", "purple"])
     assert result == "red, pink, purple" 
 
+def headers_to_csv(filename, headers):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(headers)
+
+def data_to_csv(filename, data):
+    with open(filename, mode='a', newline='') as file:  
+        writer = csv.writer(file)
+        writer.writerows(data)  
+        
 def test_write_to_csv():
     filename = "test_file.csv"
     
