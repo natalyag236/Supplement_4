@@ -1,3 +1,5 @@
+import csv
+import os
 def next_ten_nums(num):
     """Given a number, returns a string contatinning the next 10 nums spearated by commaas
 
@@ -30,3 +32,28 @@ def comma_delimited_string(string_list):
 def test_comma_string():
     result = comma_delimited_string(["red", "pink", "purple"])
     assert result == "red, pink, purple" 
+
+def test_write_to_csv():
+    filename = "test_file.csv"
+
+    headers = ["Birthday","Horoscope Sign","City"]
+    data = [
+        ["June 18,2003","Gemini","Brookyln"],
+        ["October 27,2021, Scorpio","Atlanta "],
+        ["September 3,1999","Virgo", "Houston"]
+    ]
+    headers_to_csv(filename,headers)
+    data_to_csv(filename,data)
+
+    with open(filename, mode='r')as file:
+        reader = csv.reader(file)
+        content = list(reader)
+    output = [
+        headers,
+        ["June 18,2003","Gemini","Brookyln"],
+        ["October 27,2021, Scorpio","Atlanta "],
+        ["September 3,1999","Virgo", "Houston"]
+    ]
+    assert content == output
+
+    os.remove(filename)
