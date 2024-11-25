@@ -34,15 +34,30 @@ def test_comma_string():
     assert result == "red, pink, purple" 
 
 def headers_to_csv(filename, headers):
+    """ Writes headers to CSV file.
+
+    Args:
+        filename (str): the name of the CSV file
+        headers (list): a list of colum headers to be written as the first row 
+    
+    the file is oppened in write ('w') mode, 
+    """
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(headers)
 
 def data_to_csv(filename, data):
+    """Appendes multipld rows of data to a CSV file
+
+    Args:
+        filename (str): the name of the CSV file 
+        data (list of lists):  a list of rows where each row is a list of values to be written
+    the file is openedf in append ('a') mode
+    """
     with open(filename, mode='a', newline='') as file:  
         writer = csv.writer(file)
         writer.writerows(data)  
-        
+
 def test_write_to_csv():
     filename = "test_file.csv"
     
