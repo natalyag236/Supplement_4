@@ -35,25 +35,29 @@ def test_comma_string():
 
 def test_write_to_csv():
     filename = "test_file.csv"
-
-    headers = ["Birthday","Horoscope Sign","City"]
+    
+    headers = ["Birthday", "Horoscope Sign", "City"]
     data = [
-        ["June 18,2003","Gemini","Brookyln"],
-        ["October 27,2021, Scorpio","Atlanta "],
-        ["September 3,1999","Virgo", "Houston"]
+        ["June 18, 2003", "Gemini", "Brooklyn"],
+        ["October 27, 2021", "Scorpio", "Atlanta"],
+        ["September 3, 1999", "Virgo", "Houston"]
     ]
-    headers_to_csv(filename,headers)
-    data_to_csv(filename,data)
-
-    with open(filename, mode='r')as file:
+    
+    headers_to_csv(filename, headers)
+    data_to_csv(filename, data)
+    
+    with open(filename, mode='r') as file:
         reader = csv.reader(file)
         content = list(reader)
-    output = [
+    
+    expected_content = [
         headers,
-        ["June 18,2003","Gemini","Brookyln"],
-        ["October 27,2021, Scorpio","Atlanta "],
-        ["September 3,1999","Virgo", "Houston"]
+        ["June 18, 2003", "Gemini", "Brooklyn"],
+        ["October 27, 2021", "Scorpio", "Atlanta"],
+        ["September 3, 1999", "Virgo", "Houston"]
     ]
-    assert content == output
+    
+    assert content == expected_content
 
-    os.remove(filename)
+    
+
